@@ -18,6 +18,18 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\hitable.h" />
+    <ClInclude Include="src\hitable_list.h" />
+    <ClInclude Include="src\material.h" />
+    <ClInclude Include="src\ray.h" />
+    <ClInclude Include="src\sphere.h" />
+    <ClInclude Include="src\vec3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cc" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2B153556-8BB8-4600-A834-C5F3820297AA}</ProjectGuid>
@@ -114,18 +126,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\camera.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\hitable.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\hitable_list.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\material.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\ray.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\sphere.h" />
-    <ClInclude Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\vec3.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\RayTracing-OneWeekend-v1.54.0\RayTracing-OneWeekend\src\main.cc" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
