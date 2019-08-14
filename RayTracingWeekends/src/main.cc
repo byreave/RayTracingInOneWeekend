@@ -10,6 +10,7 @@
 //==================================================================================================
 
 #include <iostream>
+#include <fstream>
 #include "sphere.h"
 #include "hitable_list.h"
 #include "float.h"
@@ -71,10 +72,12 @@ hitable *random_scene() {
 }
 
 int main() {
+	std::ofstream myfile;
+	myfile.open("data/raytracing.ppm");
     int nx = 1200;
     int ny = 800;
     int ns = 10;
-    std::cout << "P3\n" << nx << " " << ny << "\n255\n";
+    myfile << "P3\n" << nx << " " << ny << "\n255\n";
     hitable *list[5];
     float R = cos(M_PI/4);
     list[0] = new sphere(vec3(0,0,-1), 0.5, new lambertian(vec3(0.1, 0.2, 0.5)));
@@ -107,9 +110,12 @@ int main() {
             int ir = int(255.99*col[0]); 
             int ig = int(255.99*col[1]); 
             int ib = int(255.99*col[2]); 
-            std::cout << ir << " " << ig << " " << ib << "\n";
+            myfile << ir << " " << ig << " " << ib << "\n";
         }
     }
+
+	myfile.close();
+	return 0;
 }
 
 
