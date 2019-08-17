@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\ConsoleLog.h" />
     <ClInclude Include="src\hitable.h" />
     <ClInclude Include="src\hitable_list.h" />
     <ClInclude Include="src\material.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="src\vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ConsoleLog.cpp" />
     <ClCompile Include="src\main.cc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ConsoleLog">
+      <UniqueIdentifier>{396e33a0-19f0-49c4-841b-fe32825ab14f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h">
@@ -36,10 +39,16 @@
     <ClInclude Include="src\vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ConsoleLog.h">
+      <Filter>ConsoleLog</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cc">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConsoleLog.cpp">
+      <Filter>ConsoleLog</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
