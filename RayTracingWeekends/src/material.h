@@ -65,6 +65,8 @@ class lambertian : public material {
              attenuation = albedo;
              return true;
         }
+		static void * operator new (size_t sz) { return _aligned_malloc(sz, 16); }
+		static void operator delete (void * ptr) { _aligned_free(ptr); }
 
         vec3 albedo;
 };
@@ -78,6 +80,10 @@ class metal : public material {
             attenuation = albedo;
             return (dot(scattered.direction(), rec.normal) > 0);
         }
+
+		static void * operator new (size_t sz) { return _aligned_malloc(sz, 16); }
+		static void operator delete (void * ptr) { _aligned_free(ptr); }
+
         vec3 albedo;
         float fuzz;
 };

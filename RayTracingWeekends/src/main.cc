@@ -16,6 +16,9 @@
 #include "float.h"
 #include "camera.h"
 #include "material.h"
+#include <chrono> 
+#include "ConsoleLog.h"
+using namespace std::chrono;
 
 
 #define MAXFLOAT FLT_MAX
@@ -72,6 +75,7 @@ hitable *random_scene() {
 }
 
 int main() {
+	srand(time(nullptr));
 	std::ofstream myfile;
 	myfile.open("data/raytracing.ppm");
     int nx = 1200;
@@ -95,6 +99,7 @@ int main() {
 
     camera cam(lookfrom, lookat, vec3(0,1,0), 20, float(nx)/float(ny), aperture, dist_to_focus);
 
+	auto start = high_resolution_clock::now();
     for (int j = ny-1; j >= 0; j--) {
         for (int i = 0; i < nx; i++) {
             vec3 col(0, 0, 0);
@@ -112,8 +117,11 @@ int main() {
             int ib = int(255.99*col[2]); 
             myfile << ir << " " << ig << " " << ib << "\n";
         }
+		ConsoleLog("Msg", "Finished %d Loop. \n", j);
     }
-
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<microseconds>(stop - start);
+	ConsoleLog("Msg", "Time spent : %ll", duration.count());
 	myfile.close();
 	return 0;
 }

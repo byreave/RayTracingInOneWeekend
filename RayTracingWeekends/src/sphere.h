@@ -19,6 +19,8 @@ class sphere: public hitable  {
         sphere() {}
         sphere(vec3 cen, float r, material *m) : center(cen), radius(r), mat_ptr(m)  {};
         virtual bool hit(const ray& r, float tmin, float tmax, hit_record& rec) const;
+		static void * operator new (size_t sz) { return _aligned_malloc(sz, 16); }
+		static void operator delete (void * ptr) { _aligned_free(ptr); }
         vec3 center;
         float radius;
         material *mat_ptr;
