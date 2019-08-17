@@ -117,12 +117,14 @@ int main() {
             int ib = int(255.99*col[2]); 
             myfile << ir << " " << ig << " " << ib << "\n";
         }
-		ConsoleLog("Msg", "Finished %d Loop. \n", j);
+		DEBUG_PRINT("Msg", "Finished %d Loop. \n", j);
     }
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
-	ConsoleLog("Msg", "Time spent : %ll", duration.count());
+	DEBUG_PRINT("Msg", "Time spent : %d", duration.count());
+	std::cout << duration.count();
 	myfile.close();
+	std::cin.get();
 	return 0;
 }
 
