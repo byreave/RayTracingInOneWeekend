@@ -18,6 +18,7 @@
 #include "material.h"
 #include <chrono> 
 #include "ConsoleLog.h"
+#include <omp.h>
 using namespace std::chrono;
 
 
@@ -100,6 +101,9 @@ int main() {
     camera cam(lookfrom, lookat, vec3(0,1,0), 20, float(nx)/float(ny), aperture, dist_to_focus);
 
 	auto start = high_resolution_clock::now();
+	omp_set_num_threads(16);
+#pragma omp parallel
+#pragma omp for
     for (int j = ny-1; j >= 0; j--) {
         for (int i = 0; i < nx; i++) {
             vec3 col(0, 0, 0);
