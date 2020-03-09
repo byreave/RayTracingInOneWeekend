@@ -79,8 +79,12 @@ int main() {
 	srand(time(nullptr));
 	std::ofstream myfile;
 	myfile.open("data/raytracing.ppm");
-    int nx = 1200;
-    int ny = 800;
+    const int nx = 1200;
+    const int ny = 800;
+
+	auto finalImage = new vec3 * [nx];
+	for (int i = 0; i < nx; ++i)
+		finalImage[i] = new vec3[ny];
     int ns = 10;
     myfile << "P3\n" << nx << " " << ny << "\n255\n";
     hitable *list[5];
@@ -119,15 +123,30 @@ int main() {
             int ir = int(255.99*col[0]); 
             int ig = int(255.99*col[1]); 
             int ib = int(255.99*col[2]); 
-            myfile << ir << " " << ig << " " << ib << "\n";
+			finalImage[i][j].e[0] = ir;
+			finalImage[i][j].e[1] = ig;
+			finalImage[i][j].e[2] = ib;
+            //myfile << ir << " " << ig << " " << ib << "\n";
         }
 		DEBUG_PRINT("Msg", "Finished %d Loop. \n", j);
     }
+
+	for (int j = ny - 1; j >= 0; j--) {
+		for (int i = 0; i < nx; i++) {
+			myfile << finalImage[i][j] << "\n";
+		}
+	}
+
+
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start);
 	DEBUG_PRINT("Msg", "Time spent : %d", duration.count());
 	std::cout << duration.count();
 	myfile.close();
+	for (int i = 0; i < nx; ++i)
+		delete[]finalImage[i];
+	delete[] finalImage;
+	finalImage = nullptr;
 	std::cin.get();
 	return 0;
 }
